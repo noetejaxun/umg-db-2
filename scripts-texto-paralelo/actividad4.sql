@@ -103,3 +103,30 @@ COMMIT TRANSACTION
 Podemos observar como no devulve datos la instacia donde se consulta y nos indica que hay una transaccion
 en proceso, al momento de terminar la transaccion inmedidatamente se muestran los datos del select
 */
+
+/*
+Estados de la transaccion
+*/
+--Activa
+--La transaccionesta activa al momento de iniciarse la misma
+BEGIN TRANSACTION
+	UPDATE Productos
+		SET Invetario = 80
+		WHERE Clave_Producto = 1
+		--Parcialmente comprometida
+		--Afectamos datos y esta parcialmente comprometida
+		--Verificar la tabla para comprobar
+	INSERT INTO Ventas(Clave_Producto, Cantidad, Subtotal, Total)
+	VALUES ('1', 10, 5*10, (5*10)+(5*10*0.12)) --Se suma el IVA
+	--Abortada
+	--Si ejecutamos el comando la transaccion se abortará
+	Rollback
+	--Abortada
+	--Fallida
+	--Si ejecutamos este comando la transaccion fallara, se realizara un auto rollback
+		INSERT INTO Ventas(Clave_Producto, Cantidad, Subtotal, Total)
+		VALUES ('1', 'Dato erroneo', 5*10, (5*10)+(5*10*0.12)) --Se suma el IVA
+	--Fallida
+COMMIT TRANSACTION
+--Completada
+--La transaccion esta
