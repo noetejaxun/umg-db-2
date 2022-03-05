@@ -73,12 +73,12 @@ Begin Transaction
 Commit Transaction
 
 --Obtener registros
-select * from Cuentas;
-select * from Transacciones;
+select * from Cuentas
+select * from Transacciones
 --Transacciones por fecha 
 select Cuenta_Deposita, Cuenta_Recibe, Monto, Fecha_Transaccion from Transacciones 
-where Fecha_Transaccion = '2/02/2022';
+where Fecha_Transaccion = '2/02/2022'
 --Transacciones por cuenta 
---select Cuenta_Deposita, Cuenta_Recibe, Monto, Fecha_Transaccion from Transacciones where Cuenta_Deposita = '106369893' or Cuenta_Recibe = '106369893'
 select Cuenta_Deposita, Cuenta_Recibe, Monto, Fecha_Transaccion from Transacciones 
-where Cuenta_Deposita = '106369893';
+where Cuenta_Deposita = '106369893'
+--select Cuenta_Deposita, Cuenta_Recibe, Monto, Fecha_Transaccion from Transacciones where Cuenta_Deposita = '106369893' or Cuenta_Recibe = '106369893'
